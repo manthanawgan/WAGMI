@@ -52,9 +52,9 @@ app.set('trust proxy', 1);
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 WAGMI-9000 Echo Unit online on port ${PORT}`);
-  console.log(`📡 Ready to receive transmissions at POST /wagmi`);
-  console.log(`⚡ Optimized for 2K requests/second (10K in 4-5 seconds)`);
+  console.log(`WAGMI-9000 Echo Unit online on port ${PORT}`);
+  console.log(`Ready to receive transmissions at POST /wagmi`);
+  console.log(`Optimized for 2K requests/second (10K in 4-5 seconds)`);
 });
 
 server.keepAliveTimeout = 65000;
