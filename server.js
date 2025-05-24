@@ -74,7 +74,7 @@ app.use((error, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-y
+
 const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`WAGMI-9000 Echo Unit online at port ${PORT}`);
     console.log(`Ready to handle 10k concurrent requests`);
@@ -85,7 +85,6 @@ server.headersTimeout = 66000;
 server.timeout = 120000;
 server.maxConnections = 20000;
 
-// Graceful shutdown
 process.on('SIGTERM', () => {
     console.log('SIGTERM received, shutting down gracefully');
     server.close(() => {
