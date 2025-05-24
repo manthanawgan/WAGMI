@@ -10,50 +10,53 @@ app.get('/health', (req, res) => {
 app.post('/wagmi', (req, res) => {
     try {
         const body = req.body;
-        
-        if (!body || Object.keys(body).length === 0 || (!body.hasOwnProperty('a') && !body.hasOwnProperty('b'))) {
+
+        if (!body || Object.keys(body).length === 0) {
             return res.status(200).json({
                 message: "wagmi",
                 timestamp: new Date().toISOString(),
                 lang: "Node.js"
             });
         }
-        
-        const { a, b } = body;
-        t
-        if (a === undefined || b === undefined) {
-            return res.status(400).json({
-                error: "Invalid input"
-            });
-        }
-        
-        if (typeof a !== 'number' || typeof b !== 'number') {
-            return res.status(400).json({
-                error: "Invalid input"
+
+        if (body.hasOwnProperty('a') && body.hasOwnProperty('b')) {
+            const { a, b } = body;
+
+            if (typeof a !== 'number' || typeof b !== 'number') {
+                return res.status(400).json({
+                    error: "Invalid input"
+                });
+            }
+
+            if (a < 0 || b < 0) {
+                return res.status(400).json({
+                    error: "Invalid input"
+                });
+            }
+
+            const result = a + b;
+            if (result > 100) {
+                return res.status(400).json({
+                    error: "Invalid input"
+                });
+            }
+
+            return res.status(200).json({
+                result: result,
+                a: a,
+                b: b,
+                status: "success"
             });
         }
 
-        if (a < 0 || b < 0) {
-            return res.status(400).json({
-                error: "Invalid input"
-            });
-        }
-        
-        const result = a + b;
-        if (result > 100) {
-            return res.status(400).json({
-                error: "Invalid input"
-            });
-        }
-        
         return res.status(200).json({
-            result: result,
-            a: a,
-            b: b,
-            status: "success"
+            message: "wagmi",
+            timestamp: new Date().toISOString(),
+            lang: "Node.js"
         });
         
     } catch (error) {
+        console.error('Request processing error:', error);
         return res.status(400).json({
             error: "Invalid input"
         });
