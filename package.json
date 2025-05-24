@@ -1,20 +1,28 @@
 {
-  "name": "wagmi-9000-challenge",
+  "name": "wagmi-9000-echo-unit",
   "version": "1.0.0",
-  "description": "WAGMI-9000 - Single Route REST API Challenge",
+  "description": "Echo Unit WAGMI-9000 - High-performance REST endpoint for peaceful communication",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "test" : "node test.js"
+    "test": "node test.js"
   },
+  "keywords": ["wagmi", "echo", "rest", "api", "high-performance"],
+  "author": "Echo Unit WAGMI-9000",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
-  "keywords": ["wagmi", "rest-api", "challenge", "echo-unit"],
-  "author": "Manthan Awgan",
-  "license": "MIT"
+  "railway": {
+    "build": {
+      "command": "npm install"
+    },
+    "start": {
+      "command": "npm start"
+    }
+  }
 }
